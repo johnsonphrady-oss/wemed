@@ -65,7 +65,10 @@ function toggleOpen(li) {
 /* ===== 渲染：近期更新文件 ===== */
 function renderRecentDocs() {
   var ul = document.querySelector('#recent-docs ul');
-  recentDocs.forEach(function(doc) {
+  var sorted = recentDocs.slice().sort(function(a, b) {
+    return b.date.localeCompare(a.date);
+  });
+  sorted.forEach(function(doc) {
     var li = document.createElement('li');
     li.innerHTML =
       '<div class="summary">' +
