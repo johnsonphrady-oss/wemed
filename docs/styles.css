@@ -1,0 +1,150 @@
+/* ===== Reset ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== Base ===== */
+body {
+  font-family: "Microsoft JhengHei", "蘋方-繁", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  background: #f0f2f5;
+  color: #333;
+}
+
+/* ===== Header ===== */
+header {
+  background: #1d4ed8;
+  color: #fff;
+  padding: 1rem 1.5rem;
+}
+
+header h1 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Main ===== */
+main {
+  padding: 1.5rem;
+}
+
+/* ===== Grid：桌機 2×2 ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ===== Card ===== */
+section {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  padding: 1.25rem;
+}
+
+section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  color: #1d4ed8;
+}
+
+/* ===== List ===== */
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #f3f4f6;
+  cursor: pointer;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background: #f9fafb;
+}
+
+/* ===== Summary row ===== */
+.summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.summary .title {
+  flex: 1;
+  font-weight: 500;
+}
+
+.summary .meta {
+  font-size: 0.8rem;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+/* ===== Detail（展開區）===== */
+.detail {
+  display: none;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f9fafb;
+  border-left: 3px solid #93c5fd;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+li.open .detail {
+  display: block;
+}
+
+/* ===== Badge（狀態色塊）===== */
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge.processing {
+  background: #f97316;
+}
+
+.badge.closed {
+  background: #22c55e;
+}
+
+/* ===== 平板（768px – 1023px）===== */
+@media (max-width: 1023px) {
+  main {
+    padding: 1rem;
+  }
+  .grid {
+    gap: 1rem;
+  }
+}
+
+/* ===== 手機（< 768px）：單欄 ===== */
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  header h1 {
+    font-size: 1.1rem;
+  }
+}
