@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Frontend quality review",
+      "trigger": "PostFileSave",
+      "matcher": "^docs/.*\\.(html|css|js)$",
+      "action": {
+        "type": "agent",
+        "prompt": "請對剛儲存的檔案執行前端品質審查，只列出發現的問題，不要自動修改任何檔案，也不要執行下一個 Task。\n\n審查項目：\n1. HTML 結構與語意標籤是否合理（如 header、main、section、h1/h2 層級）\n2. CSS 是否支援桌機（≥1024px）與手機（<768px）響應式版面\n3. JavaScript 是否有明顯語法錯誤、未定義變數或 console.error\n4. 圖片、CSS、JavaScript 是否使用正確的相對路徑（不可使用絕對路徑或外部 URL）\n5. 是否有基本無障礙問題（如 img 缺少 alt、按鈕缺少可辨識文字、表單缺少 label）\n6. 是否加入 requirements.md 未要求的功能（需對照 .kiro/specs/requirements.md）\n7. 是否使用 Node.js、Vite、React、後端、資料庫或任何外部套件／CDN\n\n輸出格式（只列出有問題的項目，無問題則回覆「本次儲存無發現問題」）：\n\n**檔案**：`<檔案路徑>`\n**問題**：<問題說明>\n**建議**：<修正方式>\n\n---"
+      }
+    }
+  ]
+}
