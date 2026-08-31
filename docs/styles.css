@@ -359,6 +359,15 @@ li.open .detail {
   min-width: 180px;
 }
 
+#version-table a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+#version-table a:hover {
+  color: #1e40af;
+}
+
 .ver-badge {
   display: inline-block;
   padding: 0.1rem 0.5rem;

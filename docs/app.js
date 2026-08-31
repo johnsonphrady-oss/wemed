@@ -1,17 +1,17 @@
 /* ===== 模擬資料：文件版本總覽 ===== */
 const versionOverview = [
-  { id: 'iMET-SOP01', name: 'iMET 產品組裝作業標準書（SOP）', version: 'V3.1', date: '2026-08-20', status: '現行' },
-  { id: 'iMET-SOP02', name: 'iMET 產品包裝作業標準書（SOP）', version: 'V1.1', date: '2026-07-15', status: '現行' },
-  { id: 'iMET-SOP03', name: 'iMET 產品安裝作業標準書（SOP）', version: 'V1.1', date: '2026-07-15', status: '現行' },
-  { id: 'iMET-SOP04', name: 'iMET 產品服務作業標準書（SOP）', version: 'V1.1', date: '2026-07-10', status: '現行' },
-  { id: 'iMET-SOP05', name: 'iMET 產品儲存作業標準書（SOP）', version: 'V1.1', date: '2026-06-30', status: '現行' },
-  { id: 'iMET-SOP06', name: 'iMET 產品搬運作業標準書（SOP）', version: 'V1.1', date: '2026-06-30', status: '現行' },
-  { id: 'iMET-SOP07', name: 'iMET 產品運銷作業標準書（SOP）', version: 'V1.1', date: '2026-06-28', status: '審查中' },
-  { id: 'iMET-QP01',  name: '製程管制程序書',                  version: 'V3.2', date: '2026-08-20', status: '現行' },
-  { id: 'iMET-QP02',  name: '供應商評鑑準則',                  version: 'V2.0', date: '2026-08-15', status: '現行' },
-  { id: 'iMET-QP03',  name: '不合格品管制程序',                version: 'V1.5', date: '2026-08-10', status: '現行' },
-  { id: 'iMET-QP04',  name: '內部稽核作業程序',                version: 'V4.0', date: '2026-07-28', status: '現行' },
-  { id: 'iMET-QP05',  name: '量測設備管理辦法',                version: 'V2.3', date: '2026-07-20', status: '現行' }
+  { id: 'iMET-SOP01', name: 'iMET 產品組裝作業標準書（SOP）', version: 'V3.1', date: '2026-08-20', status: '現行', link: 'https://docs.google.com/document/d/1Yai0A1f0wC2uD_8Ut5kZuAFIjmZgQ_Nh/edit?usp=drive_link&ouid=101542857653483530177&rtpof=true&sd=true' },
+  { id: 'iMET-SOP02', name: 'iMET 產品包裝作業標準書（SOP）', version: 'V1.1', date: '2026-07-15', status: '現行', link: '' },
+  { id: 'iMET-SOP03', name: 'iMET 產品安裝作業標準書（SOP）', version: 'V1.1', date: '2026-07-15', status: '現行', link: '' },
+  { id: 'iMET-SOP04', name: 'iMET 產品服務作業標準書（SOP）', version: 'V1.1', date: '2026-07-10', status: '現行', link: '' },
+  { id: 'iMET-SOP05', name: 'iMET 產品儲存作業標準書（SOP）', version: 'V1.1', date: '2026-06-30', status: '現行', link: '' },
+  { id: 'iMET-SOP06', name: 'iMET 產品搬運作業標準書（SOP）', version: 'V1.1', date: '2026-06-30', status: '現行', link: '' },
+  { id: 'iMET-SOP07', name: 'iMET 產品運銷作業標準書（SOP）', version: 'V1.1', date: '2026-06-28', status: '審查中', link: '' },
+  { id: 'iMET-QP01',  name: '製程管制程序書',                  version: 'V3.2', date: '2026-08-20', status: '現行', link: '' },
+  { id: 'iMET-QP02',  name: '供應商評鑑準則',                  version: 'V2.0', date: '2026-08-15', status: '現行', link: '' },
+  { id: 'iMET-QP03',  name: '不合格品管制程序',                version: 'V1.5', date: '2026-08-10', status: '現行', link: '' },
+  { id: 'iMET-QP04',  name: '內部稽核作業程序',                version: 'V4.0', date: '2026-07-28', status: '現行', link: '' },
+  { id: 'iMET-QP05',  name: '量測設備管理辦法',                version: 'V2.3', date: '2026-07-20', status: '現行', link: '' }
 ];
 
 /* ===== 渲染：文件版本總覽表 ===== */
@@ -19,10 +19,13 @@ function renderVersionOverview() {
   var tbody = document.querySelector('#version-table tbody');
   versionOverview.forEach(function(doc) {
     var statusClass = doc.status === '審查中' ? 'status-review' : 'status-active';
+    var nameCell = doc.link
+      ? '<a href="' + doc.link + '" target="_blank" rel="noopener">' + doc.name + '</a>'
+      : doc.name;
     var tr = document.createElement('tr');
     tr.innerHTML =
       '<td>' + doc.id + '</td>' +
-      '<td>' + doc.name + '</td>' +
+      '<td>' + nameCell + '</td>' +
       '<td><span class="ver-badge">' + doc.version + '</span></td>' +
       '<td>' + doc.date + '</td>' +
       '<td><span class="' + statusClass + '">' + doc.status + '</span></td>' +
