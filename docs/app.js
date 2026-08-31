@@ -139,3 +139,78 @@ renderRecentDocs();
 renderAuditIssues();
 renderVersionDiffs();
 renderQuiz();
+
+/* ===== 對話視窗 ===== */
+(function () {
+  var fab = document.getElementById('chat-fab');
+  var panel = document.getElementById('chat-panel');
+  var closeBtn = document.getElementById('chat-close');
+  var input = document.getElementById('chat-input');
+  var sendBtn = document.getElementById('chat-send');
+  var fileInput = document.getElementById('chat-file');
+  var messages = document.getElementById('chat-messages');
+
+  /* 模擬系統回覆 */
+  var autoReplies = [
+    '已收到，資料寫入成功。',
+    '已記錄，稍後將由相關人員處理。',
+    '檔案已上傳，系統正在處理中。',
+    '謝謝您的回報，資料已存入資料庫。',
+    '已完成登錄，您可繼續輸入下一筆。'
+  ];
+  var replyIndex = 0;
+
+  function addMessage(text, type) {
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + type;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function sendMessage(text) {
+    if (!text.trim()) return;
+    addMessage(text, 'user');
+    input.value = '';
+    /* 模擬系統延遲回覆 */
+    setTimeout(function () {
+      addMessage(autoReplies[replyIndex % autoReplies.length], 'system');
+      replyIndex++;
+    }, 600);
+  }
+
+  /* 開關面板 */
+  fab.addEventListener('click', function () {
+    var isOpen = panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+    if (isOpen) input.focus();
+  });
+
+  closeBtn.addEventListener('click', function () {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+  });
+
+  /* 送出訊息 */
+  sendBtn.addEventListener('click', function () {
+    sendMessage(input.value);
+  });
+
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') sendMessage(input.value);
+  });
+
+  /* 上傳檔案 */
+  fileInput.addEventListener('change', function () {
+    var file = fileInput.files[0];
+    if (!file) return;
+    addMessage('📄 已上傳：' + file.name, 'user');
+    fileInput.value = '';
+    setTimeout(function () {
+      addMessage('檔案「' + file.name + '」已收到，資料寫入成功。', 'system');
+    }, 600);
+  });
+
+  /* 初始歡迎訊息 */
+  addMessage('您好！請輸入訊息或上傳檔案，資料將寫入系統。', 'system');
+}());

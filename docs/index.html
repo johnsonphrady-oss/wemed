@@ -38,6 +38,25 @@
     </div>
   </main>
 
+  <!-- ===== 對話視窗 ===== -->
+  <div id="chat-fab" title="開啟資料輸入視窗">
+    <span>&#128172;</span>
+  </div>
+
+  <div id="chat-panel" role="dialog" aria-label="資料輸入視窗" aria-hidden="true">
+    <div id="chat-header">
+      <span>資料輸入</span>
+      <button id="chat-close" aria-label="關閉">&#10005;</button>
+    </div>
+    <div id="chat-messages"></div>
+    <div id="chat-input-area">
+      <label id="chat-file-label" for="chat-file" title="上傳檔案">&#128206;</label>
+      <input type="file" id="chat-file" accept=".pdf,.doc,.docx,.txt" aria-label="上傳檔案">
+      <input type="text" id="chat-input" placeholder="輸入訊息或上傳檔案…" autocomplete="off">
+      <button id="chat-send" aria-label="送出">送出</button>
+    </div>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>
