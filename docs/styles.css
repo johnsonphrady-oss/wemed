@@ -315,3 +315,66 @@ li.open .detail {
     bottom: 5rem;
   }
 }
+
+/* ===== 版本總覽表 ===== */
+#version-overview {
+  margin-bottom: 1.25rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+#version-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+#version-table th,
+#version-table td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+#version-table thead th {
+  background: #f1f5f9;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #d1d5db;
+}
+
+#version-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+#version-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+#version-table td:nth-child(2) {
+  white-space: normal;
+  min-width: 180px;
+}
+
+.ver-badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status-active {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-review {
+  color: #d97706;
+  font-weight: 600;
+}
