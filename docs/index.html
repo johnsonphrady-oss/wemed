@@ -25,6 +25,7 @@
               <th>目前版本</th>
               <th>最後更新</th>
               <th>狀態</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -56,6 +57,73 @@
 
     </div>
   </main>
+
+  <!-- ===== 製修訂表單 Modal ===== -->
+  <div id="rev-overlay" role="dialog" aria-modal="true" aria-label="製修訂表單" aria-hidden="true">
+    <div id="rev-modal">
+      <div id="rev-modal-header">
+        <span>製修訂申請表</span>
+        <button id="rev-close" aria-label="關閉">&#10005;</button>
+      </div>
+      <div id="rev-modal-body">
+
+        <!-- 表單 -->
+        <div id="rev-form">
+          <div class="rev-row">
+            <label>文件編號</label>
+            <input type="text" id="rev-doc-id" readonly>
+          </div>
+          <div class="rev-row">
+            <label>文件名稱</label>
+            <input type="text" id="rev-doc-name" readonly>
+          </div>
+          <div class="rev-row">
+            <label>現行版次</label>
+            <input type="text" id="rev-old-ver" readonly>
+          </div>
+          <div class="rev-row">
+            <label>修訂後版次</label>
+            <input type="text" id="rev-new-ver" placeholder="例：V3.2">
+          </div>
+          <div class="rev-row">
+            <label>修訂日期</label>
+            <input type="date" id="rev-date">
+          </div>
+          <div class="rev-row">
+            <label>修訂原因</label>
+            <textarea id="rev-reason" rows="3" placeholder="請說明本次修訂原因…"></textarea>
+          </div>
+          <div class="rev-row">
+            <label>修訂內容摘要</label>
+            <textarea id="rev-summary" rows="3" placeholder="請說明修訂的主要內容…"></textarea>
+          </div>
+          <div class="rev-row">
+            <label>修訂者</label>
+            <input type="text" id="rev-author" placeholder="姓名">
+          </div>
+          <div class="rev-row">
+            <label>審核者</label>
+            <input type="text" id="rev-reviewer" placeholder="姓名">
+          </div>
+          <div class="rev-row">
+            <label>核准者</label>
+            <input type="text" id="rev-approver" placeholder="姓名">
+          </div>
+          <div id="rev-actions">
+            <button id="rev-preview-btn">即時預覽</button>
+            <button id="rev-word-btn">下載 Word</button>
+          </div>
+        </div>
+
+        <!-- 即時預覽區 -->
+        <div id="rev-preview" style="display:none">
+          <div id="rev-preview-content"></div>
+          <button id="rev-back-btn">&#8592; 返回編輯</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <!-- ===== 對話視窗 ===== -->
   <div id="chat-fab" title="開啟資料輸入視窗">
